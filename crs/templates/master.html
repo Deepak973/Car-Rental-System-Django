@@ -1,0 +1,219 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Car Rental System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"  />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https:///maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+
+<!-- bootstrap -->
+<link href="{% static 'master/bootstrap.min.css' %}" rel='stylesheet' type='text/css' media="all" />
+<!-- //bootstrap -->
+<link href="{% static 'master/dashboard.css' %}" rel="stylesheet">
+<!-- Custom Theme files -->
+<link href="{% static 'master/style.css' %}" rel='stylesheet' type='text/css' media="all" />
+<script src="{% static 'master/jquery-1.11.1.min.js' %}"></script>
+<!--start-smoth-scrolling-->
+<!-- fonts -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+<!-- //fonts -->
+</head>
+<style>
+
+	.home{
+		background-image: url( "{% static 'images/car.jpg' %}");
+		background-repeat: no-repeat;
+		background-size:100%;
+		width: auto;
+		height :600px;
+	
+	}
+	.wrapper {
+		background: silver;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0px;
+		grid-auto-rows: 100px 100px;
+		font-size: 20px;
+	  }
+	.isa_info, .isa_success, .isa_warning, .isa_error {
+		margin: 10px 0px;
+		padding:12px;
+		 
+		}
+		.isa_info {
+			color: #00529B;
+			background-color: #BDE5F8;
+		}
+		.isa_success {
+			color: #4F8A10;
+			background-color: #DFF2BF;
+		}
+		.isa_warning {
+			color: #9F6000;
+			background-color: #FEEFB3;
+		}
+		.isa_error {
+			color: #D8000C;
+			background-color: #FFD2D2;
+		}
+		.isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+			margin:10px 22px;
+			font-size:2em;
+			vertical-align:middle;
+		}
+	input[type=file]{
+		width:150px;
+		color: #000;
+	}
+	select {
+		-webkit-appearance: button;
+		-moz-appearance: button;
+	
+		-webkit-padding-end: 20px;
+		-moz-padding-end: 20px;
+		-webkit-padding-start: 2px;
+		-moz-padding-start: 2px;
+		background-color: #75f0db; /* Fallback color if gradients are not supported */
+		background-image: url(../images/select-arrow.png), -webkit-linear-gradient(top, #E5E5E5, #F4F4F4); /* For Chrome and Safari */
+		background-image: url(../images/select-arrow.png), -moz-linear-gradient(top, #E5E5E5, #F4F4F4); /* For old Firefox (3.6 to 15) */
+		background-image: url(../images/select-arrow.png), -ms-linear-gradient(top, #E5E5E5, #F4F4F4); /* For pre-releases of Internet Explorer  10*/
+		background-image: url(../images/select-arrow.png), -o-linear-gradient(top, #E5E5E5, #F4F4F4); /* For old Opera (11.1 to 12.0) */
+		background-image: url(../images/select-arrow.png), linear-gradient(to bottom, #E5E5E5, #F4F4F4); /* Standard syntax; must be last */
+		background-position: center right;
+		background-repeat: no-repeat;
+		border: 1px solid black;
+		border-radius: 2px;
+		box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+		color: #555;
+		font-size: 10pt;
+		margin: 0;
+		overflow: hidden;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		width: 150px;
+	}
+	hr {
+		margin-top: 50px;
+		margin-bottom: 50px;
+		border-top: 1px solid black;
+	   }
+    
+	   #tabels {
+		font-family: Arial, Helvetica, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	  }
+	  
+	  #tabels td, #tabels th {
+		border: 1px solid #ddd;
+		padding: 8px;
+		color: black; 
+	  }
+	  
+	  #tabels tr:nth-child(even){background-color: silver;}
+	  #tabels tr:nth-child(odd){background-color: silver;}
+	  
+	  
+	  #tabels th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color :rgba(0, 0, 0, 0.692);
+		color: white; 
+		
+	  }  
+	   
+</style>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: silver;">
+      <div class="container-fluid" >
+        <div class="navbar-header" >
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href=""><h1><img src="{% static 'images/logo2.jpg' %}" width="235px" height="65px" style="margin-left: 0px;" /></h1></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        	<!--
+			<div class="top-search">
+				<form class="navbar-form navbar-right">
+					<input type="text" class="form-control" placeholder="Search lead">
+					<input type="submit" value="">
+				</form>
+			</div>-->
+			<div class="header-top-right">
+			
+
+				<div class="signin">
+					<a href="/logout" class="play-icon popup-with-zoom-anim">Sign out</a>
+					<!-- pop-up-box -->
+									
+										
+    </nav>
+	
+        <div class="col-sm-3 col-md-2 sidebar">
+			<div class="top-navigation">
+				<div class="t-menu">MENU</div>
+				<div class="t-img">
+					<img src="" alt="" />
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+				<div class="drop-navigation drop-navigation">
+				  <ul class="nav nav-sidebar">
+				  	<br>
+					<li><a href="/home"  class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+					
+					<li><a href="/bar/" class="menu1"><span class="glyphicon glyphicon-film glyphicon-book" aria-hidden="true"></span>Book a Car<span  aria-hidden="true"></span></a></li>
+       
+					<li><a href="/booked/" class="menu"><span class="glyphicon glyphicon-film glyphicon-book" aria-hidden="true"></span>See Bookings<span aria-hidden="true"></span></a></li>
+                    <li><a href="/contactus/"  class="menu"><span class="glyphicon glyphicon-film glyphicon-book" aria-hidden="true"></span>Contact us<span aria-hidden="true"></span></a></li>	
+
+				  
+				  
+					<div class="side-bottom">
+						
+						<div class="copyright">
+							<p>Copyright © 2021 Car Rental 24X7
+						</div>
+					</div>
+				</div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div class="main-grids">
+			
+                {% block content %}
+
+                {% endblock %}
+                
+				<!---->
+				
+			</div>
+			<!-- footer -->
+			
+								
+			<!-- //footer -->
+	
+    
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static  'bootstrap.min.js' %} "></script>
+   
+  </body>
+</html>
+
+
+

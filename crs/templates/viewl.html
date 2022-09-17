@@ -1,0 +1,29 @@
+{% extends 'adminmaster.html' %}
+
+{% block content %}
+
+
+
+
+</center>
+
+<table border="4" id="tabels" style="font-size: 20px;">
+    <tr>
+        <th>Pincode</th>
+        <th>Location</th>
+        <th>actions</th>
+
+    </tr>
+    {%for locs in loc %}
+    <tr>
+        <td>{{locs.pincode}}</td>
+        <td>{{locs.l_name}}</td>
+        <td>
+            <a href="/editl/{{locs.id}}"><i class='far fa-edit'></i>Edit</a>&nbsp&nbsp&nbsp&nbsp
+            <a href="/deletel/{{locs.id}}"><i class='fas fa-trash-alt'></i>Delete</a>
+        </td>
+
+     </tr>
+     {% endfor %}
+</table>
+{% endblock %}

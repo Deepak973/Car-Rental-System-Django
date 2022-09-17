@@ -1,0 +1,40 @@
+{% extends 'adminmaster.html' %}
+
+{% block content %}
+
+
+
+
+</center>
+
+<table border="4" id="tabels" style="font-size: 20px;">
+    <tr>
+        <th>Full Name</th>
+        <th>Email Id</th>
+        <th>Contact No</th>
+        <th>Licsence No</th>
+        <th>Date of Birth</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Actions</th>
+
+    </tr>
+    {%for vus in vu %}
+    <tr>
+        <td>{{vus.fullname}}</td>
+        <td>{{vus.email_id}}</td>
+        <td>{{vus.contact_no}}</td>
+        <td>{{vus.lic_no}}</td>
+        <td>{{vus.dob}}</td>
+        <td>{{vus.address}}</td>
+        <td>{{vus.city}}</td>
+        <td>{{vus.country}}</td>
+        <td>
+            <a href="/viewuserdetails/{{vus.email_id}}"><i class='far fa-edit'></i>View Bookings</a>&nbsp&nbsp&nbsp&nbsp
+        </td>
+
+     </tr>
+     {% endfor %}
+</table>
+{% endblock %}

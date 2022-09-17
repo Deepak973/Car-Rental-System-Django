@@ -1,0 +1,70 @@
+{% extends 'master.html' %}
+
+{% block content %}
+
+{%for vehs in cb %}
+<center><img src="{{ vehs.vehicle_image }}" width="250px" height="250px" alt="Vehicle Image"></center>
+<table border="4" id="tabels" style="font-size: 20px;">
+    
+    <tr>
+        <th>Booking Number</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Total Price</th>
+        <th>Refund amount</th>
+      
+
+
+    </tr>
+    
+    <tr>
+        <td>{{vehs.booking_number}}</td>
+        <td>{{vehs.from_date}}</td>
+        <td>{{vehs.to_date}}</td>
+        <td> Rs.{{vehs.total_price}}/-</td>
+        <td> Rs.{{ra}}/-  </td>
+        
+     
+       
+        
+    </tr>   
+
+
+<tr>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;" >Vehicle Brand</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Vehicle Name</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Fuel Type</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Seating Capacity</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Air Condition</td>
+
+
+    </tr>
+<tr>   
+    <td>{{vehs.vehicle_brand}}</td>
+    <td>{{vehs.vehicle_name}}</td>
+    <td>{{vehs.fuel_type}}</td>
+    <td>{{vehs.seating_capacity}}</td>
+    <td>{{vehs.aircondition}}</td>
+   
+      
+     </tr>
+    
+</table>
+<center><a style="font-size:30px;" href="/cancelbookingconfirm/{{vehs.booking_number}}/{{ra}}"><i class='far fa-edit'></i>Cancle Booking</a></center>
+<hr>
+<br><div style="font-size: 20px;">
+<b>
+Cancellation Policy<br>
+Kindly read carefully<br>
+1) For cancellation on the day of booking sart date, only 60% of the money will be deducted from the amount paid at the time of booking<br>
+1) For cancellation before 1 day, only 50% of the money will be deducted from the amount paid at the time of booking<br>
+2) For cancellation before 2 days, only 30% of the money will be deducted from the amount paid at the time of booking<br> 
+3) For cancellation before 3 days, only 20% of the money will be deducted from the amount paid at the time of booking<br>  
+4) No money will be deducted if the cancellation is done before 4 days from the date booked for renting the vehicle.<br>
+5) Money will be refunded in your bank Account within 2-3 working days.
+</div>
+</b>
+{% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'adminmaster.html' %}
+
+{% block content %}
+
+{% load static %}
+<center>{% if messages %}
+{% for result in messages %}
+<b style="color: red;">{{result}}</b> 
+{% endfor %}
+{% endif%}
+</center>
+
+<div class="signin">
+<a href="/viewl/" class="play-icon popup-with-zoom-anim">View Records</a>
+</div>
+
+<center><form  method ="POST" action="/updatel/{{loc.id}}"> 
+  {% csrf_token %} 
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{% static 'form/form.css' %}">
+  <div class="login">
+  <div class="login-form">
+  <table border="0">
+  <tr>  
+     
+      <td><h3>Pincode</h3></td><td></span><input type="number" value="{{loc.pincode}}" name="pincode"  required="true" /></td>
+   
+  </tr>
+<tr>
+
+      <td><h3>Location Name:</h3></td><td></span><input type="text" value="{{loc.l_name}}" name="lname" required="true"/></td>
+</tr>
+
+<span> <tr><td colspan="2"></span><input type="submit" value="Update location" class="login-button" /></td></tr>
+</label>
+</table>
+</div>
+</div>
+</form>
+<hr>
+</center>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+

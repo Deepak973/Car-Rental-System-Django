@@ -1,0 +1,58 @@
+{% extends 'adminmaster.html' %}
+
+{% block content %}
+
+
+
+
+</center>
+{%for vehs in veh %}
+<center><img src="{{ vehs.vehicle_image }}" width="250px" height="250px" alt="Vehicle Image"></center>
+<table border="4" id="tabels" style="font-size: 20px;">
+    
+    <tr>
+        <th>Vehicle Brand</th>
+        <th>Location</th>
+        <th>Vehicle Name</th>
+        <th colspan="2">Price Per Day</th>
+     
+        <th>Actions</th>
+
+    </tr>
+    
+    <tr>
+        <td>{{vehs.vehicle_brand}}</td>
+        <td>{{vehs.l_name}}</td>
+        <td>{{vehs.vehicle_name}}</td>
+        <td colspan="2">{{vehs.price_per_day}}</td>
+       
+        <td rowspan="3">
+            <a href="/editv/{{vehs.id}}"><i class='far fa-edit'></i>Edit</a>&nbsp&nbsp&nbsp&nbsp
+            <a href="/deletev/{{vehs.id}}"><i class='fas fa-trash-alt'></i>Delete</a>
+        </td>
+    </tr>   
+
+
+<tr>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;" >Fuel Type</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Seating Capacity</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Aircondition</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Air Bag</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">No of Vehicles</td>
+     
+    </tr>
+<tr>   
+        <td>{{vehs.fuel_type}}</td>
+        <td>{{vehs.seating_capacity}}</td>
+        <td>{{vehs.aircondition}}</td>
+        <td>{{vehs.airbag}}</td>
+        <td>{{vehs.vehicle_no}}</td>
+    
+      
+     </tr>
+     
+</table>
+<hr>
+<br><br><br>
+{% endfor %}
+{% endblock %}

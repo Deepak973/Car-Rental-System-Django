@@ -1,0 +1,58 @@
+
+{% extends 'seelayout.html' %}</center>
+
+{% block subcontent %}
+
+{%for vehs in book %}
+<center><img src="{{ vehs.vehicle_image }}" width="250px" height="250px" alt="Vehicle Image"></center>
+<table border="4" id="tabels" style="font-size: 20px;">
+    
+    <tr>
+        <th>Booking Number</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Air Condition</th>
+        <th>Total Price</th>
+        <th>Status</th>
+     
+
+    </tr>
+    
+    <tr>
+        <td>{{vehs.booking_number}}</td>
+        <td>{{vehs.from_date}}</td>
+        <td>{{vehs.to_date}}</td>
+        <td>{{vehs.aircondition}}</td>
+        <td>{{vehs.total_price}}</td>
+        <td>{{vehs.status}}</td>
+       
+       
+    </tr>   
+
+
+<tr>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;" >Vehicle Brand</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Vehicle Name</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Fuel Type</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Seating Capacity</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Air Condition</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Addtional charges</td>
+   
+
+    </tr>
+<tr>   
+        <td>{{vehs.vehicle_brand}}</td>
+        <td>{{vehs.vehicle_name}}</td>
+        <td>{{vehs.fuel_type}}</td>
+        <td>{{vehs.seating_capacity}}</td>
+        <td>{{vehs.aircondition}}</td>
+        <td>{{vehs.additional_charge}}</td>
+     
+      
+     </tr>
+     
+</table>
+<hr>
+<br><br><br>
+{% endfor %}
+{% endblock %}

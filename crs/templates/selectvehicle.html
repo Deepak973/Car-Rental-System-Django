@@ -1,0 +1,43 @@
+{% extends 'master.html' %}
+
+{% block content %}
+
+{% if messages %}
+{% for result in messages %}
+<div class="isa_info">
+    <i class="fa fa-info-circle">{{result}}</i>
+  </div>
+{% endfor %}
+{%else%}
+
+<form action="bookv/{{vehs.id}}" method="POST" enctype="multipart/form-data" >
+    {% csrf_token %} 
+<div style="font-size: 20px;"><b>Selected Date</b><br>
+    <b>From Date : </b>{{sdate}} <br> 
+    <b>To Date : </b> {{edate}} <br>
+    <b>Total Hours: </b>{{hrs}} <br>
+</div>
+
+ 
+
+
+
+{%for vehs in veh %}
+<div class="wrapper">
+    <div><img src="{{ vehs.vehicle_image }}" width="250px" height="200px" alt="Vehicle Image"></div>
+    <div style="font-size: 40px;">{{vehs.vehicle_brand}} {{vehs.vehicle_name}}</div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div><b>Seating Capacity:</b> {{vehs.seating_capacity}} Seater <br> <b>Fuel Type:</b> {{vehs.fuel_type}} </div>
+        <div><b>Aircondition:</b> {{vehs.aircondition}} <br> <b>Air Bag:</b> {{vehs.airbag}} </div>
+        <div><b>Price/Hr:</b> {{vehs.price_per_day}} <br>
+        <b>Total Price: </b>     
+        {% widthratio hrs 1 vehs.price_per_day %}     
+        <br><a href="bookv/{{vehs.id}}/{{sdate}}/{{edate}}"><i class='far fa-edit'></i>Book This Vehicle</a></div>
+   </div>
+<br><br><br>
+{%endfor%}
+</form>
+{% endif%}
+{% endblock %}

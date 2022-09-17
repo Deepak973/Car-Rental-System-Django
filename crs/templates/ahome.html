@@ -1,0 +1,14 @@
+{% extends 'adminmaster.html' %}
+
+{% block content %}
+
+  
+<center><h1>Welcome Admin</h1></center>
+{% if messages %}
+{% for result in messages %}
+<div class="isa_sucess">
+    <i class="fa fa-info-circle">{{result}}</i>
+  </div>
+{% endfor %}
+{% endif %}
+{% endblock %}

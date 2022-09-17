@@ -1,0 +1,85 @@
+{% extends 'adminmaster.html' %}
+
+{% block content %}
+
+<div style="font-size: 20px;"><b>Selected Date</b><br>
+    <b>From Date : </b>{{fdate}} <br> 
+    <b>To Date : </b> {{tdate}} <br>
+</div>
+<div style="font-size: 20px;">
+
+    {% if status == "complete" %}
+    {% for d in ta %}
+    Total amount of completed bookings = {{d.total}}<br>
+    {% endfor%}
+    {% for ad in ad %}
+    Total additional Charge = {{ ad.adtotal}}
+    {% endfor%}
+    {% endif %}
+
+    {% if status == "cancelled" %}
+    {% for e in da %}
+    Total amount of cancelled bookings = {{e.dtotal}}<br>
+    {% endfor %}
+    {% endif %}
+
+    {% if status == "booked"  %}
+    {% for b in ba %}
+    Total amount of on going bookings = {{b.btotal}}<br>
+    {% endfor %}
+    {% endif %}
+
+    </div>
+{% for d in details%}
+
+<table border="4" id="tabels" style="font-size: 20px;">
+    
+    <tr>
+        <th>Booking Number</th>
+        <th>Email id</th>
+        <th>Vehicle id</th>
+        <th>From Date</th>
+        <th>To date</th>
+
+    </tr>
+    
+    <tr>
+        <td>{{d.booking_number}}</td>
+        <td>{{d.email_id}}</td>
+        <td>{{d.veh_id}}</td>
+        <td>{{d.from_date}}</td>
+        <td>{{d.to_date}}</td>
+
+        
+    </tr>   
+
+
+<tr>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;" >Total price</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Refund amount</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Amount Differnece</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Status</td>
+        <td style="background-color :rgba(0, 0, 0, 0.692); color:white;">Additional Charge</td>
+     
+     
+    </tr>
+<tr>   
+        <td>{{d.total_price}}</td>
+        <td>{{d.refund_price}}</td>
+        <td>{{d.diff_amount}}</td>
+        <td>{{d.status}}</td>
+        <td>{{d.additional_charge}}</td>
+    
+    
+      
+     </tr>
+     
+</table>
+<br><br>
+
+
+{% endfor%}
+
+
+
+{% endblock %}

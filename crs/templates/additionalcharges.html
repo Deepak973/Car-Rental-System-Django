@@ -1,0 +1,13 @@
+{% extends 'adminmaster.html' %}
+
+{% block content %}
+
+<form action="/additional/{{vehs.booking_number}" method="POST">
+{% csrf_token %} 
+<div class="wrapper">
+Enter <br>additional Charge <input type="number" name="add">
+<input type="hidden" name="id" value="{{booking_id}}">
+<input type="submit" value="add charges">
+</div>
+</form>
+{% endblock%}

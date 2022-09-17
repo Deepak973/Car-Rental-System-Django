@@ -1,0 +1,54 @@
+{% extends 'master.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<center><form action="/barv" method="POST" enctype="multipart/form-data" >
+  {% csrf_token %} 
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+  
+ 
+    <center style="font-size: 30px;">Start Your Journey</center>
+    <div class="wrapper">
+      <div>City  : <br><select style="font-size: 20px;" id="loc" name="location" require="true">
+        <option disabled="true" selected>Select City</option>
+        {% for locs in loc %}
+        <option value="{{locs.l_name}}">{{locs.l_name}}</option>
+        {% endfor %}    
+    </select></div>
+      
+      <div>Start Date :<br><input type="datetime-local" name="sdate"  required="true" min="{{now}}" id="txtDate" /></div>
+      
+      <div>End Date and time:<br><input type="datetime-local" name="edate" id="txtDate2" required="true"  /></div>
+      
+      <div><br><input type="submit" value="Book Car"></div>
+      </div>
+      <div class="home">
+        </div>
+
+
+</form>
+
+</center>
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+
+    
+  $( "#txtDate" ).change(function() {
+
+      
+      $('#txtDate2').attr('min', $(this).val());
+      });
+   
+    
+});
+</script>
+
+
+
+{% endblock %}
+
+

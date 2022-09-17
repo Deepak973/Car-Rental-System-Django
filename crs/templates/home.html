@@ -1,0 +1,19 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="home">
+
+<center><h1 style="color: red;">Welcome {{ name.fullname }}</center></h1>
+{% if messages %}
+{% for result in messages %}
+<div class="isa_info">
+    <i class="fa fa-info-circle">{{result}}</i>
+  </div>
+{% endfor %}
+{% endif%}
+
+</div>
+
+{% endblock %}

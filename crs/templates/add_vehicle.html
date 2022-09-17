@@ -1,0 +1,114 @@
+{% extends 'adminmaster.html' %}
+
+{% block content %}
+
+{% load static %}
+<center>{% if messages %}
+{% for result in messages %}
+<b style="color: red;">{{result}}</b> 
+{% endfor %}
+{% endif%}
+</center>
+
+<div class="signin">
+<a href="/viewv/" class="play-icon popup-with-zoom-anim">View Records</a>
+</div>
+
+<center><form action="/addveh/" method="POST" enctype="multipart/form-data" >
+  {% csrf_token %} 
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{% static 'form/form.css' %}">
+  <div class="login">
+  <div class="login-form">
+  <table border="0" >
+<tr>  
+      <td><h3>Vehicle Brand :</h3></td><td></span><input type="text" name="vbrand"  required="true" /></td> 
+</tr>
+<tr>
+    <tr><td><br></td><td></td></tr>
+    <tr>  
+        <td><h3>Select Location :</h3></td><td><select id="loc" name="location" require="true">
+            <option disabled="true" selected>Select Location</option>
+            {% for loc in locs %}
+            <option value="{{loc.l_name}}">{{loc.l_name}}</option>
+            {% endfor %}
+            
+        </select>
+        </td>
+        </tr>
+        <tr><td><br></td><td></td></tr>
+      <td ><h3>Vehicle Name :</h3></td><td><input type="text" name="v_name" required="true"/></td>
+</tr>
+<tr><td><br></td><td></td></tr>
+<tr>  
+    <td><h3>Vehicle Image :</h3></td><td><input type="file" name="img" accept="image/png, image/gif, image/jpeg"  required="true" /></td> 
+</tr>
+<tr> 
+    <tr><td><br></td><td></td></tr> 
+    <td><h3>Price Per Hour :</h3></td><td><input type="number" name="ppd"  required="true" /></td> 
+</tr>
+<tr><td><br></td><td></td></tr>
+<tr>  
+    <td><h3>Fuel Type :</h3></td><td><select id="ft" name="ft" require="true">
+        <option disabled="true" selected>Fuel type</option>
+        <option value="Petrol">Petrol</option>
+        <option value="Diesel">Diesel</option>
+    </select>
+    </td>
+    </tr>
+    <tr><td><br><br></td><td></td></tr>
+  
+    <tr>  
+        <td><h3>Seating Capacity :</h3></td><td><select id="sc" name="sc" required="true">
+            <option disabled="true" selected>Seating Capacity</option>
+            <option value="two">Two Seater</option>
+            <option value="three">Three Seater</option>
+            <option value="four">Four Seater</option>
+            <option value="five">Five Seater</option>
+            <option value="six">Six Seater</option>
+            <option value="seven">Seven Seater</option>
+            <option value="eight">Eight Seater</option>
+        </select>
+    </td>
+    </tr>
+    <tr><td><br><br></td><td></td></tr>
+    
+    <td><h3>Aircondition :</h3></td><td>
+        <select id="ac" name="ac" required="true">
+            <option disabled="true" selected>Air conditioned</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option></td> 
+</tr>
+</tr>
+<tr><td><br><br></td><td></td></tr>
+<td><h3>Air Bag :</h3></td><td>
+    <select id="ab" name="ab" required="true">
+        <option disabled="true" selected>Air Bag</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option></td> 
+</tr>
+<tr><td><br></td><td></td></tr>
+<tr>  
+    <td><h3>Vehicle No: :</h3></td><td><input style="text-transform: uppercase;" type="text" name="vehno"  required="true" /></td> 
+</tr>
+<tr><td><br></td><td></td></tr>
+
+<span> <tr><td colspan="2"></span><input type="submit" value="Add Vehicle" class="login-button" /></td></tr>
+</label>
+</table>
+</div>
+</div>
+</form>
+
+</center>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+

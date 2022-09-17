@@ -1,0 +1,53 @@
+{% extends 'adminmaster.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<center><form action="/acc" method="POST" enctype="multipart/form-data" >
+  {% csrf_token %} 
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+  
+ 
+    <center style="font-size: 30px;">Select Dates</center>
+    <div class="wrapper">
+      
+      <div>From Date :<br><input type="datetime-local" name="sdate"  id="txtDate" required="true" /></div>
+        
+      <div>To Date:<br><input type="datetime-local" name="edate" id="txtDate2" required="true" /></div>
+      
+      <div>Status<br><select style="font-size: 20px;"  name="status" require="true">
+        <option disabled="true">Status</option>
+        <option value="booked">Booked</option>
+        <option value="complete">Completed</option>
+        <option value="cancelled">Cancelled</option>
+        </select>
+        </div>
+      <div><br><input type="submit" value="generate report"></div>
+      </div>
+    
+
+
+</form>
+
+</center>
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+  
+      
+    $( "#txtDate" ).change(function() {
+  
+        
+        $('#txtDate2').attr('min', $(this).val());
+        });
+     
+      
+  });
+</script>
+
+
+
+
+{% endblock %}

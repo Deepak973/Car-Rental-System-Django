@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Register</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+           <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+           <link href="{% static 'style.css' %}" rel="stylesheet">
+           <link href="{% static 'jquery.mis.js' %}" rel="stylesheet">
+           <link href="{% static 'bootstrap.min.js' %}" rel="stylesheet">
+       
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+         
+              
+
+             <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+            <h2>Register</h2>
+      <!--<img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt=" " />-->
+             </div>
+                    <form action="reg" method="post">
+                                    {% csrf_token %} 
+                                   
+                      <input type="text" " class="fadeIn second" name="fname" placeholder="Full Name" required>
+                      <input type="email" class="fadeIn third" name="email" placeholder="Email" required>
+                      <input type="password"  class="fadeIn second" name="password" placeholder="Password" required>
+                      <input type="password"  class="fadeIn second" name="c_password" placeholder="Confirm Password" required>
+                      <input type="number"  class="fadeIn second" name="contact_no" placeholder="Contact Number" required>
+                      <input type="text"  class="fadeIn second" name="lic_no" placeholder="Licence Number" required><br>
+                      Date of Birth <input type="date"  class="fadeIn second" name="dob" placeholder="Date of Birth" required><br><br>
+                      <input type="text"  class="fadeIn second" name="address" placeholder="Address" required>
+                      <input type="text"  class="fadeIn second" name="city" placeholder="City" required>
+                      <input type="text" class="fadeIn second" name="country" placeholder="Country" required>
+                         
+                      <input type="submit" class="fadeIn fourth" value="Register"><br>
+
+                      {% if messages %}
+                      {% for result in messages %}
+                      <b style="color: red;">{{result}}</b>
+                      {% endfor %}
+                      {% endif%}
+                                </form>
+                                 <div id="formFooter">
+                         <br><a class="underlineHover" href="/log">Alrady Registered?Login</a>
+                             </div>
+
+             </div>
+        </div>
+                                  </div>
+
+    </body>
+</html>
